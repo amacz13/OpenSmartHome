@@ -1,11 +1,12 @@
 <html>
     <head>
     
+        <link rel="stylesheet" type="text/css" href="css/os.css"/>
         <link rel="stylesheet" type="text/css" href="css/launcher.css"/>
         
     </head>
     <body>
-        <div id="notification-wrapper">
+        <div id="notification-wrapper" style="display: none;">
             <div id="notification">
                 <div class="notification-icon">
                     <i class="material-icons">mail</i>
@@ -17,14 +18,47 @@
             </div>
         </div>
         
-        <div id="exploreBtn" onclick="toggleExplore()"><i class="material-icons">explore</i></div>
-        
-        <div id="dateTimeZone">
-            <p id="clock"></p>
-            <p id="date"></p>
+        <div id="explorePane">
+            <div id="exploreContent">
+                <div id="exploreHeader">
+                    <h1>explore</h1>
+                    <div id="exploreQuickActions">
+                        <a class="exploreQuickAction"><i class="material-icons">search</i></a>
+                        <a class="exploreQuickAction"><i class="material-icons">keyboard_voice</i></a>
+                    </div>
+                </div>
+            </div>
+            <div id="exploreHomeBtn" onclick="closeExplore()"><i class="material-icons">home</i></div>
         </div>
         
-        <div id="appsBtn"><i class="material-icons">apps</i></div>
+        <div id="exploreBtn" onclick="showExplore()"><i class="material-icons">explore</i></div>
+        
+        <div id="content">
+            <p id="clock"></p>
+            <p id="date"></p>
+            <div id="favoriteAppsZone">
+                <a class="favoriteAppShortcut" onclick="launchApp()"><i class="material-icons">wb_sunny</i></a>
+                <a class="favoriteAppShortcut"><i class="material-icons">alarm</i></a>
+                <a class="favoriteAppShortcut"><i class="material-icons">date_range</i></a>
+                <a class="favoriteAppShortcut"><i class="material-icons">mail</i></a>
+                <a class="favoriteAppShortcut"><i class="material-icons">settings</i></a>
+            </div>
+        </div>
+        
+        <div id="appsBtn" onclick="showApps()"><i class="material-icons">apps</i></div>
+        
+        <div id="appsPane">
+            <div id="appsHomeBtn" onclick="closeApps()"><i class="material-icons">home</i></div>
+            <div id="appsContent">
+                <div id="appsHeader">
+                    <h1>apps</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div id="applicationExecutor">
+            <div id="quitAppBtn" onclick="closeApp()"><i class="material-icons">home</i></div>
+        </div>
         
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/launcher.js"></script>

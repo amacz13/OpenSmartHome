@@ -1,3 +1,6 @@
+var isDynamicBgEnabled = true;
+
+/* Clock Mechanism */
 function displayDateTime(){
     var d = new Date(),
     seconds = d.getSeconds(),
@@ -17,8 +20,34 @@ function displayDateTime(){
     setTimeout(displayDateTime, 1000);
 }
 
-function toggleExplore() {
-    $("#notification-wrapper").hide();
+/* Explore Pane Toggler */
+function showExplore() {
+    document.getElementById("explorePane").style.width = "100%";
+    //$("#notification-wrapper").fadeOut(400);
 }
 
+function closeExplore() {
+    document.getElementById("explorePane").style.width = "0";
+}
+
+/* Apps Pane Toggler */
+function showApps() {
+    document.getElementById("appsPane").style.width = "100%";
+}
+
+function closeApps() {
+    document.getElementById("appsPane").style.width = "0";
+}
+
+/* App Launcher */
+
+function launchApp() {
+    document.getElementById("applicationExecutor").style.height = "100%";
+}
+
+function closeApp() {
+    document.getElementById("applicationExecutor").style.height = "0";
+}
+
+/* Functions that need to be executed at start */
 displayDateTime();
