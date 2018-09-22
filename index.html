@@ -6,6 +6,19 @@
         
     </head>
     <body>
+        
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div id="modal-header"></div>
+                <hr width="100%">
+                <p id="modal-msg"></p>
+                <div id="modalsBtns">
+                    <a class="modalBtn" id="modal-yes"></a>
+                    <a class="modalBtn" id="modal-no" onclick="closeModal();"></a>
+                </div>
+            </div>
+        </div>
+        
         <div id="notification-wrapper" style="display: none;">
             <div id="notification">
                 <div class="notification-icon">
@@ -17,14 +30,22 @@
                 </div>
             </div>
         </div>
+        <div id="statusBar">
+            <i class="material-icons" style="display: none;" onclick="closeApp()" id="backInAppBtn">navigate_before</i>
+            <i class="material-icons" style="display: none;" onclick="closeApp()" id="homeInAppBtn">home</i>
+            <i class="material-icons">alarm_on</i>
+            <i class="material-icons">wifi</i>
+            <i class="material-icons">bluetooth</i>
+            <i class="material-icons">battery_charging_full</i>
+        </div>
         
-        <div id="explorePane">
+        <div id="explorePane" class="transparent">
             <div id="exploreContent">
                 <div id="exploreHeader">
                     <h1>explore</h1>
                     <div id="exploreQuickActions">
                         <a class="exploreQuickAction"><i class="material-icons">search</i></a>
-                        <a class="exploreQuickAction"><i class="material-icons">keyboard_voice</i></a>
+                        <a class="exploreQuickAction"><i class="material-icons" onclick="launchVoiceAssistant()">keyboard_voice</i></a>
                     </div>
                 </div>
             </div>
@@ -38,7 +59,7 @@
             <p id="date"></p>
             <div id="favoriteAppsZone">
                 <a class="favoriteAppShortcut" onclick="launchApp()"><i class="material-icons">wb_sunny</i></a>
-                <a class="favoriteAppShortcut"><i class="material-icons">alarm</i></a>
+                <a class="favoriteAppShortcut" onclick="upgradeOS()"><i class="material-icons">alarm</i></a>
                 <a class="favoriteAppShortcut"><i class="material-icons">date_range</i></a>
                 <a class="favoriteAppShortcut"><i class="material-icons">mail</i></a>
                 <a class="favoriteAppShortcut"><i class="material-icons">settings</i></a>
@@ -49,18 +70,42 @@
         
         <div id="appsPane">
             <div id="appsHomeBtn" onclick="closeApps()"><i class="material-icons">home</i></div>
+            <div id="appsHeader">
+                <h1>apps</h1>
+            </div>
             <div id="appsContent">
-                <div id="appsHeader">
-                    <h1>apps</h1>
+                <div id="appsCarousel">
+                    <a class="carouselNavigator"><i class="material-icons">navigate_before</i></a>
+                    <div id="carouselAppsPresenter">
+                        <a class="appBox">
+                            <i class="material-icons">alarm</i>
+                            <span>Horloge</span>
+                        </a>
+                        <a class="appBox">
+                            <i class="material-icons">mail</i>
+                            <span>Mails</span>
+                        </a>
+                        <a class="appBox" onclick="launchApp()">
+                            <i class="material-icons">wb_sunny</i>
+                            <span>Météo</span>
+                        </a>
+                    </div>
+                    <a class="carouselNavigator"><i class="material-icons">navigate_next</i></a>
                 </div>
             </div>
         </div>
         
         <div id="applicationExecutor">
-            <div id="quitAppBtn" onclick="closeApp()"><i class="material-icons">home</i></div>
+            <div id="app-header">
+                <h1>météo</h1>
+            </div>
+            <div id="app-content">
+                
+            </div>
         </div>
         
         <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/artyom.js"></script>
         <script src="js/launcher.js"></script>
     </body>
 </html>

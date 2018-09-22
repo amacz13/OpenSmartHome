@@ -1,10 +1,19 @@
 /* HomeScreen */
 
+.blur {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
 body {
     margin:0;
     padding:0;
     background-color:white;
-    background-image: url(../img/launcher/backgrounds/01.jpg);
+    background-image: url(../img/launcher/backgrounds/02.jpg);
     -webkit-background-size: cover;
     background-size: cover;
     display: flex;
@@ -21,7 +30,7 @@ p {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height:80%;
+    height:100%;
     align-items: center;
     justify-content: center;
 } 
@@ -100,7 +109,6 @@ p {
 .favoriteAppShortcut {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    padding: 1.5%;
     margin-left: 3%;
     margin-right: 3%;
 }
@@ -112,7 +120,40 @@ p {
 .favoriteAppShortcut i {
     color: white;
     font-size: 2.5em;
+    margin: 0.5em;
 }
+
+/* Status Bar */
+
+#statusBar {
+    z-index: 999;
+    height: 10%;
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+}
+
+#statusBar i {
+    color: white;
+    padding: 1%;
+    margin: 1%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+
+#homeInAppBtn:hover {
+    background-color: rgba(60, 60, 60, 0.5);
+}
+
+#backInAppBtn:hover {
+    background-color: rgba(60, 60, 60, 0.5);
+}
+
 
 /* Explore */
 
@@ -123,11 +164,16 @@ p {
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #111;
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     display: flex;
     flex-direction: row;
+}
+
+#explorePane.transparent {
+    background-color: rgba(0, 0, 0, 0.8); /* Black*/
+    transition: 0.5s; 
 }
 
 #exploreContent {
@@ -219,26 +265,36 @@ p {
     flex-direction: row;
 }
 
+#appsPane.transparent {
+    background-color: rgba(0, 0, 0, 0.8); /* Black */
+    transition: 0.5s; 
+}
+
 #appsContent {
     width: 92.5%;
     display: flex;
     align-self: top;
+    flex-direction: column;
 }
 
 #appsHeader {
+    position: absolute;
     display: flex;
     width: 100%;
+    z-index: 50;
     height: 20%;
-    margin: 5%;
+    margin-top: 5%;
     flex-direction: row;
     align-items: center;
 }
 
-#appsContent #appsHeader h1 {
+#appsHeader h1 {
     font-family: 'muktaregular';
     color: white;
     font-size: 4em;
     width: 100%;
+    margin-top: 5%;
+    margin-right: 5%;
     text-align: right;
 }
 
@@ -266,6 +322,71 @@ p {
     font-size: 4em;
 }
 
+#appsCarousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.carouselNavigator {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+    border-radius: 50%;
+}
+
+a.carouselNavigator:hover {
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+a.carouselNavigator i {
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 4em;
+}
+
+#carouselAppsPresenter {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+a.appBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    width: 30%;
+    background: rgba(25, 25, 25, 0.7);
+    margin : 1%;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+
+a.appBox:hover {
+    background: rgba(50, 50, 50, 0.5);
+    box-shadow: 10px 10px rgba(10, 10, 10, 0.7);
+}
+
+a.appBox i {
+    color: white;
+    font-size: 4em;
+    margin: 5%;
+}
+
+a.appBox span  {
+    color: white;
+    font-family: 'muktaregular';
+    font-size: 2em;
+    margin: 5%;
+}
+
 /* Application Executor */
 
 #applicationExecutor {
@@ -279,30 +400,93 @@ p {
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
 
-#quitAppBtn {
+/* Modals (needed to be moved in global OS css) */
+.modal {
+    display: none; /* Hidden by default */
+    transition: all 500ms ease;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 1em;
+}
+
+.modal-content #modal-header {
+    font-family: 'muktaregular';
+    font-size: 2em;
+    color: #2A628F;
+}
+
+.modal-content hr {
+    color: #2A628F;
+}
+
+.modal-content p {
+    color: black;
+    font-size: 1.2em;
+}
+
+#modalsBtns {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 7.5%;
-    width: 80%;
-    border-radius: 0 0 1500% 1500%;
+    justify-content: center;
+}
+
+.modalBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #2A628F;
     color: white;
     font-family: 'muktaregular';
+    width: 40%;
     text-align: center;
-    align-self: top;
+    border-radius: 3em;
+    height: 5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
 }
 
-#quitAppBtn:hover {
-    background-color: rgba(60, 60, 60, 0.5);
+.modalBtn:hover {
+    background-color: #3B739F;
 }
 
-#quitAppBtn i {
-    text-align: center;
-    width: 100%;
-    font-size: 3em;
+/* Demo Météo App */
+
+#app-header {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#app-content {
+    height: 90%;
+}
+
+#app-header h1{
+    color: white;
+    font-family: 'muktaregular';
+    font-size: 2em;
+    margin-left: 5%;
 }
